@@ -1,3 +1,4 @@
+# this is breadth first search not in syllabus
 e = int(input("Enter the number of edges: "))
 graph = {}
 
