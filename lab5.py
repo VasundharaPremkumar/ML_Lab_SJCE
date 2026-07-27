@@ -14,7 +14,7 @@ plt.show()
 
 # Alpha-Beta Pruning Algorithm
 
-MAX, MIN = 1000, -1000
+MAX, MIN = 1000, -1000 #setting thresholds
 
 def alpha_beta(depth, nodeIndex, maximizingPlayer, values, alpha, beta):
     if depth == max_depth:                              # Leaf node reached
