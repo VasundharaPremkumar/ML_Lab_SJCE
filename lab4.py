@@ -1,57 +1,38 @@
-# 4)Visualize the n-dimensional data using heat-map. 
-# Write a program to implement Min-Max algorithm. 
+# 4) Visualize the n-dimensional data using Heat Map.
+# Write a program to implement Min-Max Algorithm.
+
 from sklearn.datasets import load_iris
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-iris = load_iris()
+iris = load_iris()                                      # Load Iris dataset
+df = pd.DataFrame(iris.data, columns=iris.feature_names) # Convert dataset into DataFrame
 
-df = pd.DataFrame(
-    iris.data,
-    columns=iris.feature_names
-)
-
-sns.heatmap(df.corr(), annot=True)
-
+sns.heatmap(df.corr(), annot=True)                      # Draw heat map
 plt.title("Heat Map")
 plt.show()
 
 # Min-Max Algorithm
 
 def minimax(depth, node, maximizing, values):
-
-    # Base Condition:
-    # If leaf node is reached, return its value
-    if depth == 3:
+    if depth == max_depth:                              # Leaf node reached
         return values[node]
+    if maximizing:                                      # MAX player's turn
+        return max(minimax(depth+1, node*2, False, values),
+                   minimax(depth+1, node*2+1, False, values))
+    else:                                               # MIN player's turn
+        return min(minimax(depth+1, node*2, True, values),
+                   minimax(depth+1, node*2+1, True, values))
 
-    # MAX player's turn
-    if maximizing:
+max_depth = int(input("Enter maximum depth: "))         # Read tree depth
+n = 2 ** max_depth                                      # Number of leaf nodes
 
-        # Choose maximum among left and right child
-        return max(
-            minimax(depth + 1, node * 2, False, values),      # Left child
-            minimax(depth + 1, node * 2 + 1, False, values)   # Right child
-        )
+values = []                                             # Store leaf values
+print(f"Enter {n} leaf node values:")
 
-    # MIN player's turn
-    else:
+for i in range(n):
+    values.append(int(input(f"Value {i+1}: ")))
 
-        # Choose minimum among left and right child
-        return min(
-            minimax(depth + 1, node * 2, True, values),       # Left child
-            minimax(depth + 1, node * 2 + 1, True, values)    # Right child
-        )
-
-
-# Leaf node values
-values = [3, 5, 6, 9, 1, 2, 0, -1]
-
-# Start from:
-# depth = 0 (root)
-# node = 0 (first node)
-# maximizing = True (root is MAX)
-result = minimax(0, 0, True, values)
-
+result = minimax(0, 0, True, values)                    # Start from root
 print("Optimal Value:", result)
