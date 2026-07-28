@@ -6,8 +6,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 
 # Load dataset
-df = pd.read_csv("glass.csv")
-
+df = pd.read_csv("http://10.24.30.48/datasets/glass.csv")
+# https://raw.githubusercontent.com/jbrownlee/Datasets/master/glass.csv check this for example where we use url for dataset
 # Features and Target
 X = df.iloc[:, 1:-1]   # Skip ID column, take feature columns
 y = df.iloc[:, -1]     # Last column is target class
