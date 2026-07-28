@@ -5,7 +5,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 
-# Load dataset
+# Load dataset using the url given in lab 
 df = pd.read_csv("http://10.24.30.48/datasets/glass.csv")
 # https://raw.githubusercontent.com/jbrownlee/Datasets/master/glass.csv check this for example where we use url for dataset
 # Features and Target
