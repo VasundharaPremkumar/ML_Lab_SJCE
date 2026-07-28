@@ -1,4 +1,4 @@
-# Training data for AND gate (Input combinations)
+# Training data for AND gate using learning the perceptron method(class notes)
 X = [[0,0],[0,1],[1,0],[1,1]]      # Input features
 y = [0,0,0,1]                      # Expected (target) outputs for AND gate
 
